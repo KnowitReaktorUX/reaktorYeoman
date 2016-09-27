@@ -1,10 +1,10 @@
-<% if (includeSass) { -%>
+<% if (includeSass === 'yes') { -%>
 
   // SASS TASK HERE
 
 <% } -%>
 
-<% if (includeReact) { -%>
+<% if (includeReact === 'yes') { -%>
 
   // REACT TASK HERE
 
