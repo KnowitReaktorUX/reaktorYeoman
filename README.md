@@ -6,6 +6,6 @@ Repository for the Yeoman generator "generator-reaktor", which is a generator fo
 
 - Install Node.
 - Install Yeoman.
-- Install Generator Reaktor
+- Install Generator Reaktor.
 
 - Run "yo reaktor"

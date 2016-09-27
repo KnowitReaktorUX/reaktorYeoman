@@ -1,8 +1,14 @@
 /**
  * ./app/index.js
  * Base Generator for Reaktor
+ *
+ * This generator fetches it's template files from
+ * https://github.com/KnowitReaktorUX/reaktorbase
+ * and copies it to the destination path.
+ * -------------------------------------------------------------------------------------------------
  */
 const generators = require('yeoman-generator');
+const download = require('download-github-repo');
 
 module.exports = generators.Base.extend({
 
@@ -18,11 +24,12 @@ module.exports = generators.Base.extend({
   writing: {
 
     templateFiles: function() {
-      // Copying template files
-      this.directory(
-        this.templatePath(),
-        this.destinationPath()
-      );
+      download('KnowitReaktorUX/reaktorbase', this.destinationPath(), function(err) {
+        if (err) {
+          this.log('error: ', err);
+          return;
+        }
+      });
     }
 
   },
@@ -35,11 +42,6 @@ module.exports = generators.Base.extend({
       // Installing Npm dependencies
       this.npmInstall();
     },
-
-    bower: function() {
-      // Installing Bower dependencies
-      this.bowerInstall();
-    }
 
   },
 
