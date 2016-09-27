@@ -49,10 +49,24 @@ module.exports = generators.Base.extend({
       if (this.answers.INCLUDE_SASS) {
         this.copy(
           this.templatePath('./gulp-tasks/_gulp-sass.js'),
-          this.destinationPath('./gulp-tasks/gulp-sass.js')          
+          this.destinationPath('./gulp-tasks/gulp-sass.js')
         );
       }
 
+    },
+
+    envFile: function() {
+      this.copy(
+        this.templatePath('_.env'),
+        this.destinationPath('.env')
+      );
+    },
+
+    gitignoreFile: function() {
+      this.copy(
+        this.templatePath('_.gitignore'),
+        this.destinationPath('.gitignore')
+      );
     }
 
   },
