@@ -1,0 +1,28 @@
+#
+# gulp/prompt.cson
+# Defining all questions that the user is asked
+# --------------------------------------------------------------------------------------------------
+#
+questions: [
+
+  {
+    type      : 'input'
+    name      : 'PROJECT_NAME'
+    message   : 'Project Name: '
+    default   : 'front-end-by-knowit'
+  }
+
+  {
+    type      : 'input'
+    name      : 'PROJECT_DESCRIPTION'
+    message   : 'Project Description: '
+    default   : 'Front-end by Knowit'
+  }
+
+  {
+    type      : 'confirm'
+    name      : 'INCLUDE_SASS'
+    message   : 'Do you want to use SASS pre-compiler?'
+  }
+
+]

@@ -1,0 +1,13 @@
+{
+  "name": "<%= _.PROJECT_NAME %>",
+  "version": "1.0.0",
+  "description": "<%= _.PROJECT_DESCRIPTION %>",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+
+    <% if (_.INCLUDE_SASS) { %>
+      ,"gulp-sass": "^2.3.2"
+    <% } %>
+
+  }
+}
