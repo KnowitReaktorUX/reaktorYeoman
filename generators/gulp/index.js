@@ -42,6 +42,17 @@ module.exports = generators.Base.extend({
         this.destinationPath('gulpfile.js'),
         { _: this.answers }
       );
+    },
+
+    gulpTasks: function() {
+
+      if (this.answers.INCLUDE_SASS) {
+        this.copy(
+          this.templatePath('./gulp-tasks/_gulp-sass.js'),
+          this.destinationPath('./gulp-tasks/gulp-sass.js')          
+        );
+      }
+
     }
 
   },
