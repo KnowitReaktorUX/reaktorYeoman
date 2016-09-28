@@ -1,13 +1,19 @@
 'use strict';
 
+require('dotenv').config();
+
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 
 module.exports = () => {
-  gulp.src('src/app.css')
+<%_ if ( _.INCLUDE_SASS ) { _%>
+  gulp.src(process.env.CSS_TEMP_FILE)
+<%_ } else { _%>
+  gulp.src(process.env.CSS_ENTRY_FILE)
+<%_ } _%>
     .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
+      browsers: ['<%= _.AUTOPREFIXER_BROWSERS %>'],
       cascade: false
     }))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(process.env.BUILD_PATH))
 };
