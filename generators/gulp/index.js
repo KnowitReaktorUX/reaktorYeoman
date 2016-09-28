@@ -73,6 +73,21 @@ module.exports = generators.Base.extend({
         );
       }
 
+      if (this.answers.INCLUDE_FABRICATOR) {
+
+        this.fs.copyTpl(
+          this.templatePath('./gulp-tasks/_task-assemble-flatten.js'),
+          this.destinationPath('./gulp-tasks/task-assemble-flatten.js'),
+          { _: this.answers }
+        );
+
+        this.fs.copyTpl(
+          this.templatePath('./gulp-tasks/_task-assemble.js'),
+          this.destinationPath('./gulp-tasks/task-assemble.js'),
+          { _: this.answers }
+        );
+      }
+
     },
 
     envFile: function() {
@@ -109,17 +124,49 @@ module.exports = generators.Base.extend({
       }
 
       if ( this.answers.INCLUDE_SASS ) {
-        this.copy(
+        this.fs.copyTpl(
           this.templatePath('app/_main.scss'),
-          this.destinationPath('app/main.scss')
+          this.destinationPath('app/main.scss'),
+          { _: this.answers }
         );
       } else if ( this.answers.INCLUDE_AUTOPREFIXER ) {
-        this.copy(
+        this.fs.copyTpl(
           this.templatePath('app/_main.css'),
-          this.destinationPath('app/main.css')
+          this.destinationPath('app/main.css'),
+          { _: this.answers }
         );
       }
 
+    },
+
+    fabricatorFiles: function() {
+      if ( this.answers.INCLUDE_FABRICATOR ) {
+
+        this.fs.copyTpl(
+          this.templatePath('app/views/_index.html'),
+          this.destinationPath('app/views/index.html'),
+          { _: this.answers }
+        );
+
+        this.fs.copyTpl(
+          this.templatePath('app/views/layouts/_default.html'),
+          this.destinationPath('app/views/layouts/default.html'),
+          { _: this.answers }
+        );
+
+        this.copy(
+          this.templatePath('app/materials/components/well/_well.html'),
+          this.destinationPath('app/materials/components/well/well.html')
+        );
+
+        if ( this.answers.INCLUDE_SASS ) {
+          this.copy(
+            this.templatePath('app/materials/components/well/_well.scss'),
+            this.destinationPath('app/materials/components/well/_well.scss')
+          );
+        }
+
+      }
     }
 
   },
@@ -129,7 +176,7 @@ module.exports = generators.Base.extend({
   install: {
 
     npm: function() {
-      this.npmInstall();
+      //this.npmInstall();
     }
 
   },

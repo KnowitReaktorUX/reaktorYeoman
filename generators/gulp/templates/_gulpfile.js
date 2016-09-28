@@ -22,6 +22,12 @@ gulp.task('css:autoprefix', autoDeps, require('./gulp-tasks/task-autoprefixer.js
 
 gulp.task('js:bundle', [], require('./gulp-tasks/task-javascript.js'));
 <%_ } _%>
+<%_ if ( _.INCLUDE_FABRICATOR ) { _%>
+
+gulp.task('assemble:flatten', ['assemble'], require('./gulp-tasks/task-assemble-flatten.js'));
+
+gulp.task('assemble', [], require('./gulp-tasks/task-assemble.js'));
+<%_ } _%>
 
 /**
  * run tasks
@@ -35,6 +41,9 @@ const defaultDeps = [
 <%_ } _%>
 <%_ if ( _.INCLUDE_BROWSERIFY ) { _%>
   ,'js:bundle'
+<%_ } _%>
+<%_ if ( _.INCLUDE_BROWSERIFY ) { _%>
+  ,'assemble:flatten'
 <%_ } _%>
 ];
 

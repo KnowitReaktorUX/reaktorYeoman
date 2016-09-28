@@ -2,3 +2,11 @@
  * ./app/main.css
  * entry-point file for css
  */
+<%_ if ( _.INCLUDE_FABRICATOR ) { _%>
+.component__well {
+ background: rgb(240, 240, 240);
+ margin: 0 auto;
+ padding: 2rem;
+ width: 50wv;
+}
+<% } %>
