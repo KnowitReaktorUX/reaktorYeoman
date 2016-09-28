@@ -3,7 +3,9 @@
  * Base Generator for Reaktor
  */
 const CSON = require('cson');
+const beautify = require('gulp-beautify');
 const generators = require('yeoman-generator');
+const filter = require('gulp-filter');
 
 module.exports = generators.Base.extend({
 
@@ -47,18 +49,28 @@ module.exports = generators.Base.extend({
     gulpTasks: function() {
 
       if (this.answers.INCLUDE_SASS) {
-        this.copy(
-          this.templatePath('./gulp-tasks/_gulp-sass.js'),
-          this.destinationPath('./gulp-tasks/gulp-sass.js')
+        this.fs.copyTpl(
+          this.templatePath('./gulp-tasks/_task-sass.js'),
+          this.destinationPath('./gulp-tasks/task-sass.js'),
+          { _: this.answers }
+        );
+      }
+
+      if (this.answers.INCLUDE_SASS) {
+        this.fs.copyTpl(
+          this.templatePath('./gulp-tasks/_task-autoprefixer.js'),
+          this.destinationPath('./gulp-tasks/task-autoprefixer.js'),
+          { _: this.answers }
         );
       }
 
     },
 
     envFile: function() {
-      this.copy(
+      this.fs.copyTpl(
         this.templatePath('_.env'),
-        this.destinationPath('.env')
+        this.destinationPath('.env'),
+        { _: this.answers }
       );
     },
 

@@ -4,10 +4,12 @@
   "description": "<%= _.PROJECT_DESCRIPTION %>",
   "devDependencies": {
     "gulp": "^3.9.1"
-
-    <% if (_.INCLUDE_SASS) { %>
-      ,"gulp-sass": "^2.3.2"
-    <% } %>
-
+    <%_ if ( _.INCLUDE_SASS ) { _%>
+    ,"gulp-sass": "^2.3.2"
+    <%_ } _%>
+    <%_ if ( _.INCLUDE_AUTOPREFIXER ) { _%>
+    ,"gulp-autoprefixer": "^3.1.1"
+    <%_ } _%>
+    ,"dotenv": "^2.0.0"
   }
 }
