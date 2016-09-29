@@ -68,13 +68,13 @@ module.exports = [
     message   : 'Do you want to use Fabricator Assemble for a better mockup-experience?'
   },
 
-  {
-    type      : 'confirm',
-    name      : 'INCLUDE_KITNINJA',
-    message   : 'Do you want to use "Kit Ninja" handlebar helpers with Fabricator Assemble?',
-    when      : (answers) => {
-      return answers.INCLUDE_FABRICATOR;
-    }
-  }
+  // {
+  //   type      : 'confirm',
+  //   name      : 'INCLUDE_KITNINJA',
+  //   message   : 'Do you want to use "Kit Ninja" handlebar helpers with Fabricator Assemble?',
+  //   when      : (answers) => {
+  //     return answers.INCLUDE_FABRICATOR;
+  //   }
+  // }
 
 ]

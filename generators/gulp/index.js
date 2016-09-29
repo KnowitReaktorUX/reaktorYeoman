@@ -91,6 +91,21 @@ module.exports = generators.Base.extend({
           this.destinationPath('./gulp-tasks/task-assemble.js'),
           { _: this.answers }
         );
+
+        this.fs.copyTpl(
+          this.templatePath('./gulp-tasks/_task-copy-assets.js'),
+          this.destinationPath('./gulp-tasks/task-copy-assets.js'),
+          { _: this.answers }
+        );
+
+        if (!this.answers.INCLUDE_AUTOPREFIXER) {
+          this.fs.copyTpl(
+            this.templatePath('./gulp-tasks/_task-copy-css.js'),
+            this.destinationPath('./gulp-tasks/task-copy-css.js'),
+            { _: this.answers }
+          );          
+        }
+
       }
 
     },
@@ -160,21 +175,42 @@ module.exports = generators.Base.extend({
         );
 
         this.copy(
-          this.templatePath('app/materials/components/well/_well.html'),
-          this.destinationPath('app/materials/components/well/well.html')
+          this.templatePath('app/materials/components/demo-page/_about.html'),
+          this.destinationPath('app/materials/components/demo-page/about.html')
+        );
+
+        this.copy(
+          this.templatePath('app/materials/components/demo-page/_contributors-list.html'),
+          this.destinationPath('app/materials/components/demo-page/contributors-list.html')
+        );
+
+        this.copy(
+          this.templatePath('app/materials/components/demo-page/_header.html'),
+          this.destinationPath('app/materials/components/demo-page/header.html')
         );
 
         if ( this.answers.INCLUDE_SASS ) {
           this.copy(
-            this.templatePath('app/materials/components/well/_well.scss'),
-            this.destinationPath('app/materials/components/well/_well.scss')
+            this.templatePath('app/materials/components/demo-page/_demo-page.scss'),
+            this.destinationPath('app/materials/components/demo-page/_demo-page.scss')
+          );
+        } else if ( !this.answers.INCLUDE_AUTOPREFIXER ) {
+          this.fs.copyTpl(
+            this.templatePath('app/_main.css'),
+            this.destinationPath('app/main.css'),
+            { _: this.answers }
           );
         }
 
         this.fs.copyTpl(
-          this.templatePath('app/data/_authors.json'),
-          this.destinationPath('app/data/authors.json'),
+          this.templatePath('app/data/_demo.json'),
+          this.destinationPath('app/data/demo.json'),
           { _: this.answers }
+        );
+
+        this.copy(
+          this.templatePath('app/assets/images/_knowit-logo.png'),
+          this.destinationPath('app/assets/images/knowit-logo.png')
         );
 
       }
@@ -187,7 +223,7 @@ module.exports = generators.Base.extend({
   install: {
 
     npm: function() {
-      //this.npmInstall();
+      this.npmInstall();
     }
 
   },

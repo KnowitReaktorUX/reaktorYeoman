@@ -2,11 +2,79 @@
  * ./app/main.css
  * entry-point file for css
  */
+
 <%_ if ( _.INCLUDE_FABRICATOR ) { _%>
-.component__well {
- background: rgb(240, 240, 240);
- margin: 0 auto;
- padding: 2rem;
- width: 50wv;
-}
+/** style for demo page **/
+html {
+  background: #f2f1ed;
+  box-sizing: border-box;
+  color: black; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  min-height: 100vh;
+  margin: 0; }
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.5; }
+
+.component__demo-page__header {
+  background: white;
+  border: 1px solid #f2f1ed; }
+  .component__demo-page__header .demo-page__header__inner-container {
+    border-left: 1px solid #f2f1ed;
+    border-right: 1px solid #f2f1ed;
+    margin: 0 auto;
+    max-width: 704px;
+    padding: 1rem; }
+  .component__demo-page__header .demo-page__header__logo {
+    width: 60px; }
+  .component__demo-page__header .demo-page__header__h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    margin: 0; }
+  @media all and (min-width: 768px) {
+    .component__demo-page__header .demo-page__header__inner-container {
+      padding: 2rem 4rem; } }
+
+.component__demo-page__about .demo-page__about__inner-container {
+  border-left: 1px solid #f2f1ed;
+  border-right: 1px solid #f2f1ed;
+  margin: 0 auto;
+  max-width: 704px;
+  padding: 1rem; }
+
+.component__demo-page__about .demo-page__about__h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.75rem; }
+
+.component__demo-page__about .demo-page__about__h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem; }
+
+@media all and (min-width: 768px) {
+  .component__demo-page__about .demo-page__about__inner-container {
+    padding: 2rem 4rem; } }
+
+.component__contributors-list {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .component__contributors-list .contributors-list__item {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem; }
+  .component__contributors-list .contributors-list__item-name {
+    font-size: 1.25rem;
+    font-weight: bold; }
+  .component__contributors-list .contributors-list__item-company {
+    font-size: .8rem;
+    margin-bottom: 1rem; }
+  @media all and (min-width: 768px) {
+    .component__contributors-list .contributors-list__item {
+      padding: 2rem; } }
+/** /style for demo page **/
 <% } %>

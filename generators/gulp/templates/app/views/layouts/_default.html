@@ -14,9 +14,11 @@
 
   {% body %}
 
+  <%_ if ( _.INCLUDE_BROWSERIFY ) { _%>
   <!-- javascript: entry-point -->
   <script src="../main.js"></script>
   <!-- /JavaScript: entry-point -->
+  <%_ } _%>
 
 </body>
 </html>

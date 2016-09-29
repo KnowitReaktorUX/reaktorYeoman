@@ -2,6 +2,9 @@
 // ./app/main.scss
 // entry-point file for scss
 //
+
 <%_ if ( _.INCLUDE_FABRICATOR ) { _%>
-@import "materials/components/well/well";
+// Style for demo page -----------------------------------------------------------------------------
+@import "materials/components/demo-page/demo-page";
+// -------------------------------------------------------------------------------------------------
 <% } %>

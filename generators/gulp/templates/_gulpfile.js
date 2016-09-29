@@ -28,8 +28,14 @@ gulp.task('assemble:flatten', ['assemble'], require('./gulp-tasks/task-assemble-
 
 gulp.task('assemble', [], require('./gulp-tasks/task-assemble.js'));
 
-gulp.task('assemble:temp:clean', ['assemble:flatten'], 
+gulp.task('assemble:temp:clean', ['assemble:flatten'],
   require('./gulp-tasks/task-clean.js')(process.env.TEMP_MOCKUP_PATH));
+
+gulp.task('copy-assets', [], require('./gulp-tasks/task-copy-assets.js'));
+<%_ } _%>
+<%_ if ( _.INCLUDE_FABRICATOR && ! _.INCLUDE_AUTOPREFIXER) { _%>
+
+gulp.task('copy-css', [], require('./gulp-tasks/task-copy-css.js'));
 <%_ } _%>
 
 /**
@@ -42,11 +48,20 @@ const defaultDeps = [
 <%_ } else if ( _.INCLUDE_SASS ) { _%>
   'sass:compile'
 <%_ } _%>
-<%_ if ( _.INCLUDE_BROWSERIFY ) { _%>
+<%_ if ( _.INCLUDE_BROWSERIFY && ( !_.INCLUDE_AUTOPREFIXER && !_.INCLUDE_SASS )) { _%>
+  'js:bundle'
+<%_ } else if ( _.INCLUDE_BROWSERIFY ) {_%>
   ,'js:bundle'
 <%_ } _%>
-<%_ if ( _.INCLUDE_BROWSERIFY ) { _%>
+<%_ if ( _.INCLUDE_FABRICATOR && ( !_.INCLUDE_AUTOPREFIXER && !_.INCLUDE_SASS && !_.INCLUDE_BROWSERIFY )) { _%>
+  'assemble:temp:clean'
+  ,'copy-assets'
+<%_ } else if ( _.INCLUDE_FABRICATOR) { _%>
   ,'assemble:temp:clean'
+  ,'copy-assets'
+<%_ } _%>
+<%_ if ( _.INCLUDE_FABRICATOR && ( !_.INCLUDE_AUTOPREFIXER && !_.INCLUDE_SASS )) { _%>
+  ,'copy-css'
 <%_ } _%>
 ];
 
