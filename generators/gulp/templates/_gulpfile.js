@@ -27,6 +27,9 @@ gulp.task('js:bundle', [], require('./gulp-tasks/task-javascript.js'));
 gulp.task('assemble:flatten', ['assemble'], require('./gulp-tasks/task-assemble-flatten.js'));
 
 gulp.task('assemble', [], require('./gulp-tasks/task-assemble.js'));
+
+gulp.task('assemble:temp:clean', ['assemble:flatten'], 
+  require('./gulp-tasks/task-clean.js')(process.env.TEMP_MOCKUP_PATH));
 <%_ } _%>
 
 /**
@@ -43,7 +46,7 @@ const defaultDeps = [
   ,'js:bundle'
 <%_ } _%>
 <%_ if ( _.INCLUDE_BROWSERIFY ) { _%>
-  ,'assemble:flatten'
+  ,'assemble:temp:clean'
 <%_ } _%>
 ];
 

@@ -49,6 +49,11 @@ module.exports = generators.Base.extend({
 
     gulpTasks: function() {
 
+      this.copy(
+        this.templatePath('./gulp-tasks/_task-clean.js'),
+        this.destinationPath('./gulp-tasks/task-clean.js')
+      );
+
       if (this.answers.INCLUDE_SASS) {
         this.fs.copyTpl(
           this.templatePath('./gulp-tasks/_task-sass.js'),
@@ -165,6 +170,12 @@ module.exports = generators.Base.extend({
             this.destinationPath('app/materials/components/well/_well.scss')
           );
         }
+
+        this.fs.copyTpl(
+          this.templatePath('app/data/_authors.json'),
+          this.destinationPath('app/data/authors.json'),
+          { _: this.answers }
+        );
 
       }
     }

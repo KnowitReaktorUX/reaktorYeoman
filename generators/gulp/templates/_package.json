@@ -4,6 +4,7 @@
   "description": "<%= _.PROJECT_DESCRIPTION %>",
   "devDependencies": {
     "gulp": "^3.9.1"
+    ,"del": "^2.2.2"
     <%_ if ( _.INCLUDE_SASS ) { _%>
     ,"gulp-sass": "^2.3.2"
     <%_ } _%>
